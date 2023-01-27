@@ -39,7 +39,7 @@ fs (built-in module)
 
 ***Clone the repository***
 
-git clone https://github.com/yourusername/yourprojectname.git
+git clone https://github.com/KevinNyagi/nolwenture.git
 
 
 ***Install dependencies***
