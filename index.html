@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* CSS for styling the button-like div */
+      .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+  /* CSS for styling the table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+  }
+</style>
+<script>
+  function getData() {
+    // JavaScript function to make the POST request
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        // Parse the JSON response and add it to the table as a new row
+        var response = JSON.parse(this.responseText);
+        var table = document.getElementsByClassName("table")[0];
+        var row = table.insertRow();
+        var modelCell = row.insertCell(0);
+        var serialCell = row.insertCell(1);
+        var addressCell = row.insertCell(2);
+        var sizeCell = row.insertCell(3);
+        modelCell.innerHTML = response.modelNumber;
+        serialCell.innerHTML = response.serialNumber;
+        addressCell.innerHTML = response.supports48BitAddress ? "Yes" : "No";
+        sizeCell.innerHTML = response.diskSize + " bytes";
+      }
+    };
+    xhttp.open("POST", "/", true);
+    xhttp.send();
+  }
+</script>
+  </head>
+  <body>
+    <div class="button" onclick="getData()">Click</div>
+    <table class="table">
+      <tr>
+        <th>Model Number</th>
+        <th>Serial Number</th>
+        <th>Supports 48-bit Address</th>
+        <th>Disk Size</th>
+      </tr>
+    </table>
+  </body>
+</html>
