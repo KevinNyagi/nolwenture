@@ -20,7 +20,7 @@ Does it support “48-bit Address feature set”
 Returns parsed data in JSON format
 
 
-***********File Structure******************
+*File Structure******************
 
 index.js
 index.html
